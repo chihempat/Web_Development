@@ -1,0 +1,75 @@
+<html>
+
+<head>
+    <title>Resume Form</title>
+    <style>
+        .fs {
+            border-width: 0px;
+        }
+        
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h2 align="center">Resume</h2>
+    </header>
+    <form name="Form1" method="post" action="insert.php" target="_blank">
+        <fieldset>
+            <legend><b>Details</b></legend>
+            <table width="100%">
+                <tr>
+                    <td>First Name<br><input type="text" size="35" name="fname"></td>
+                    <td>Middle Name<br><input type="text" size="35" name="mname"></td>
+                    <td>Last Name<br><input type="text" size="35" name="lname"></td>
+                </tr>
+                <tr colspan="3"></tr>
+                <tr>
+                    <td>Gender<br><input type="radio" name="gender" value="male">Male
+                        <input type="radio" name="gender" value="female">Female</td>
+                    <td>Age<br><input type="Text" name="age"></td>
+                    <td>Email Address<br><input type="email" name="mail" size="35"></td>
+                </tr>
+                <tr colspan="3"></tr>
+                <tr>
+                    <td>Phone Number<br><input type="text" name="phone" maxlength="10" size="35"></td>
+                    <td id="phoneDiv"></td>
+                </tr>
+                <tr colspan="3"></tr>
+                <tr>
+                    <td>Address<br><input type="text" name="address" size="35"></td>
+                    <td>State<br><input type="Text" name="state" size="35"></td>
+                    <td>Country<br><input type="Text" name="country" size="35"></td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend><b>Skills</b></legend>
+            <table width="100%">
+                <td><br>Education<br><textarea name="education" cols="50" rows="10"></textarea></td>
+                <td><br>Skills<br><textarea name="skills" cols="50" rows="10"></textarea></td>
+                <td><br>Experience<br><textarea name="experience" cols="50" rows="10"></textarea></td>
+
+            </table>
+        </fieldset><br><br>
+        <fieldset class="fs">
+            <div align="center">
+                <input type="submit" name="insert" value="Submit">
+                <input type="reset" name="reset" value="Cancel">
+            </div>
+        </fieldset><br><br>
+        <fieldset class="fs">
+            <div align="center">
+                <input type="submit" formaction="showAll.php" value="Show All">
+                <input type="submit" formaction="showSin.html" value="Show Single">
+                <input type="submit" formaction="update.html" value="Update Details">
+                <input type="submit" formaction="delete.html" value="Delete Details">
+            </div>
+        </fieldset>
+    </form>
+</body>
+
+</html>

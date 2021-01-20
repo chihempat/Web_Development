@@ -1,0 +1,8 @@
+<script type="text/javascript">
+    var url = new URLSearchParams(window.location.search);
+    var i = url.get("id");
+    if (confirm("Are you sure you want to delete the record?"))
+        window.location.href = "deleteQuery.php?id=" + i;
+    else
+        window.location.href = "home.html";
+</script>

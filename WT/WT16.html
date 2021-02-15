@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>DHTML</title>
+    <style>
+        .image1 {
+            width: 25em;
+            height: 15em;
+            visibility: visible;
+        }
+        
+        .image2 {
+            width: 25em;
+            height: 15em;
+            visibility: hidden;
+        }
+        
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>Hover over the Image</h1>
+        <img class="image1" src="https://i.pinimg.com/originals/e9/fd/64/e9fd64a25688c4a9e6d76d5fa284cae1.jpg">
+        <img class="image2" src="https://www.shutterstock.com/blog/wp-content/uploads/sites/5/2016/07/spirited-away-miyazaki-2.jpg">
+        <h1>Press S to Open a new Window</h1>
+    </center>
+    <script>
+        var i1 = document.getElementsByClassName('image1');
+        var i2 = document.getElementsByClassName('image2');
+        var m = "bye";
+
+        function openWin() {
+            myWindow = window.open("", "myWindow", "width=400, height=200");
+            myWindow.document.write("Hello");
+            myWindow.onbeforeunload(alert("bye"));
+        }
+
+        i1[0].addEventListener('mouseover', function() {
+            i2[0].style.visibility = "visible";
+            i1[0].style.visibility = "hidden";
+
+        });
+        i2[0].addEventListener('mouseover', function() {
+            i1[0].style.visibility = "visible";
+            i2[0].style.visibility = "hidden";
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key == "s") {
+                openWin();
+            }
+
+        })
+    </script>
+
+</body>
+
+</html>

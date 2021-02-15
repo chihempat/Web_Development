@@ -1,0 +1,42 @@
+<HTML>
+
+<HEAD>
+    <TITLE>Timeout Example</TITLE>
+
+    <SCRIPT language="JavaScript">
+        var counter = 0;
+
+        // call Update function in 2 seconds after first load
+        ID = window.setTimeout("CounterF() ", 2000);
+
+        function CounterF() {
+            counter += 10;
+            // window.status = "The counter is now at " + counter;
+            document.form1.input1.value = "The counter is now at " + counter;
+
+            // set another timeout for the next count   
+            ID = window.setTimeout("CounterF() ", 2000);
+        }
+    </SCRIPT>
+
+</HEAD>
+
+<BODY>
+    <H1>Timeout Example</H1>
+    <HR>
+
+    <P>The text value below and the status line are being updated every two seconds. Press the RESET button to restart the count, or the STOP button to stop it. </P>
+    <HR>
+
+    <FORM name=form1>
+        <INPUT type="TEXT" size=40 name=input1>
+        <BR>
+        <INPUT onclick="counter = 0;" type=button value=RESET>
+        <BR>
+        <INPUT onclick=window.clearTimeout(ID); type=button value=STOP>
+
+        <HR>
+    </FORM>
+</BODY>
+
+</HTML>

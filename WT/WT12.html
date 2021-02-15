@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <title>User-defined objects</title>
+    <script type="text/javascript">
+        function AddThree() {
+            this.s = this.a + this.b + this.c;
+        }
+
+        function number(a, b, c) {
+            this.a = a;
+            this.b = b;
+            this.c = c;
+            this.AddThree = AddThree;
+        }
+    </script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        var num = new number(3, 4, 1);
+        num.AddThree();
+        document.write("Sum price is : " + num.s + "<br>");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<HTML>
+
+<HEAD>
+    <TITLE>Form Example</TITLE>
+
+    <SCRIPT language=JavaScript>
+        function display() {
+            DispWin = window.open('', 'NewWin', 'toolbar=no,status=no,width=300,height=200')
+            message = "<UL><LI><b>NAME: </b>" + document.form1.yourname.value;
+            message += "<LI><b>AGE: </b>" + document.form1.age.value;
+            message += "<LI><b>Gender: </b>" + document.form1.gender.value;
+            message += "<LI><b>State: </b>" + document.form1.State.value;
+            message += "<LI><b>Country: </b>" + document.form1.Country.value;
+            message += "<LI><b>Degree: </b>" + document.form1.Degree.value;
+            message += "<LI><b>Experience: </b>" + document.form1.Exp.value;
+            message += "<LI><b>Skills: </b>" + document.form1.Skills.value;
+            message += "</UL>";
+            DispWin.document.write(message);
+        }
+    </SCRIPT>
+</HEAD>
+
+<BODY>
+
+    <H1>Form Example</H1>
+    Enter the following information. When you press the Display button, the data you entered will be displayed in a pop-up window.
+
+    <FORM name=form1>
+        <P>
+            <B>Name:</B>
+            <INPUT type=text name=yourname LENGTH="20">
+        </P>
+        <P>
+            <B>Age:</B>
+            <INPUT type=text name=age LENGTH="30">
+        </P>
+        <P>
+            <B>Gender: </B>
+            <INPUT type="radio" name=gender value="male">male
+            <INPUT type="radio" name=gender value="female">female
+        </P>
+        <P>
+            <B>State: </B>
+            <INPUT type=text name=State LENGTH="15">
+        </P>
+        <P>
+            <B>Country: </B>
+            <INPUT type=text name=Country LENGTH="15">
+        </P>
+
+        <P>
+            <B>Degree: </B>
+            <INPUT type=text name=Degree LENGTH="15">
+        </P>
+        <P>
+            <B>e-Mail: </B>
+            <INPUT type=text name=Mail LENGTH="15">
+        </P>
+        <P>
+            <B>Experience: </B>
+            <INPUT type=text name=Exp LENGTH="15">
+        </P>
+        <P>
+            <B>Skills: </B>
+            <textarea name=Skills> </textarea>
+        </P>
+        <P>
+            <INPUT onclick=display(); type=button value=Display>
+        </P>
+
+
+    </FORM>
+</BODY>
+
+</HTML>

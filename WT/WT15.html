@@ -1,0 +1,83 @@
+<HTML>
+
+<HEAD>
+    <TITLE>Form Example</TITLE>
+
+    <SCRIPT language=JavaScript>
+        function validate() {
+            var emailPattern = "^[\\w-_\.]*[\\w-_\.]\@[\\w]\.+[\\w]+[\\w]$";
+            var regex = new RegExp(emailPattern);
+            var mail = document.form1.mail.value;
+            var pin = document.form1.pincode.value;
+
+
+            if (document.form1.yourname.value.length < 1) {
+                alert("Please enter your full name.");
+                return false;
+            }
+            if (document.form1.address.value.length < 6) {
+                alert("Please enter your address.");
+                return false;
+            }
+            if (isNaN(document.form1.phone.value)) {
+                alert("Please enter proper phone number.");
+                return false;
+            }
+            if (!regex.test(mail)) {
+                alert('e-mail not valid');
+                return false;
+            }
+            if (document.form1.password.value.length < 9) {
+                alert("Password length less than 8");
+                return false;
+            }
+            if (pin.length != 6 && isNaN(pin)) {
+                alert("Please use correct pincode format");
+                return false;
+            }
+            return true;
+        }
+    </SCRIPT>
+
+</HEAD>
+
+<BODY>
+    <H1>Form Example</H1>
+    <P>Enter the following information. When you press the Display button, the data you entered will be validated</P>
+
+    <FORM name=form1 onsubmit=validate();>
+        <P>
+            <B>Name:</B>
+            <INPUT type=text name=yourname required> </P>
+        <P>
+            <B>Phone: </B>
+            <INPUT type=text name=phone required> </P>
+        <P>
+            <B>e-Mail: </B>
+            <INPUT type=text name=mail required> </P>
+        <P>
+            <B>Password: </B>
+            <INPUT type=password name=password required> </P>
+        <P>
+            <B>Address:</B>
+            <INPUT type=text name=address required> </P>
+
+        <p>
+            <B>Country:</B>
+            <select id="country" required>
+                <option value="India">India</option>
+                <option value="Nepal">Nepal</option>
+                <option value="Bhutan">Bhutan</option>
+                <option value="SriLanka">SriLanka</option>
+            </select>
+        </p>
+        <P>
+            <B>Pincode: </B>
+            <INPUT type=text name=pincode required> </P>
+        <P>
+            <INPUT type=submit value=Submit>
+        </P>
+    </FORM>
+</BODY>
+
+</HTML>

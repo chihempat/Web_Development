@@ -1,9 +1,9 @@
+const mongoose = require("mongoose");
 const Order = require("../models/order");
 const Product = require("../models/product");
-const mongoose = require("mongoose");
 
 exports.orders_get_all = (req, res, next) => {
-    order.find().select('_id product quantity').populate("product", "name").exec().then(
+    Order.find().select('_id product quantity').populate("product", "name").exec().then(
         docs => {
             res.status(200).json({
                 count: docs.length,
@@ -25,7 +25,7 @@ exports.orders_get_all = (req, res, next) => {
         res.status(500).json({ error: err });
 
     })
-}
+};
 
 
 exports.orders_create_order = (req, res, next) => {

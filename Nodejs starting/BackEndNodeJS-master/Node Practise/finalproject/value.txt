@@ -1,0 +1,11 @@
+const b="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwM2UyNjkxYTcxYjgxMzBlNmI5ZjEyNSIsIm5hbWUiOiJjaGludGFuIiwiZW1haWwiOiJjaGloZW1wYXRAZ21haWwuY29tIiwiaWF0IjoxNjE0ODMwOTgyLCJleHAiOjE2MTQ4MzQ1ODJ9.8xPRoJdW5F1kSG5ZXXmZTwx1Ovq0VQt5ySe4J5XV5W0";
+
+
+
+{
+    "username": "xyx",
+    "country": "India",
+    "portfolio": "www.github.com",
+    "website": "www.github.com",
+    "instagram": "www.instagram.com/chihempat"
+}

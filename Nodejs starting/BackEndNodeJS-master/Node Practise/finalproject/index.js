@@ -7,6 +7,10 @@ const passport = require('passport');
 
 const app = express();
 
+//middleware
+app.use(bodyparser.urlencoded({ extended: false }));
+app.use(bodyparser.json());
+
 
 //bring all routes
 const auth = require('./routes/api/auth');
@@ -15,10 +19,6 @@ const profile = require('./routes/api/profile');
 
 
 
-
-//middleware
-app.use(bodyparser.urlencoded({ extended: true }));
-app.use(bodyparser.json());
 
 //mongodb configuration
 const db = require('./setup/myurl').mongoURL

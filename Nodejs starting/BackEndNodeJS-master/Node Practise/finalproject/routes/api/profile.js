@@ -181,7 +181,7 @@ router.delete("/workrole/:w_id",
 //@access private
 router.delete("/", passport.authenticate('jwt', { session: false }), (req, res) => {
     console.log(Profile);
-    Profile.findOne({ user: req.user.id })
+    Profile.findOne({ user: req.user.id });
     Profile.findOneAndRemove({ user: req.user.id })
         .then(() => {
             Person.findOneAndRemove({ _id: req.user.id })

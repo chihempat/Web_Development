@@ -1,13 +1,15 @@
 const path = require('path')
-const express = require('express');
-const dotenv = require('dotenv');
-const connectDB = require('./config/db');
-const session = require('express-session');
-const morgan = require('morgan');
+const express = require('express')
+const mongoose = require('mongoose')
+const dotenv = require('dotenv')
+const morgan = require('morgan')
 const exphbs = require('express-handlebars')
+const methodOverride = require('method-override')
 const passport = require('passport')
-const routes = require('./routes/index')
-
+const session = require('express-session')
+const MongoStore = require('connect-mongo')(session)
+const connectDB = require('./config/db')
+const MongoDBStore = require('connect-mongodb-session')(session);
 
 //load environment
 dotenv.config({ path: './config/config.env' });
@@ -16,34 +18,64 @@ dotenv.config({ path: './config/config.env' });
 require('./config/passport')(passport)
 
 const app = express();
+//connect db to
+connectDB()
+
+
+// Body parser
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan("dev"));
 }
-//routes
-app.use("/", require('./routes/index'))
-    //handlebars
+
 app.engine('.hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', '.hbs')
 
+app.use(session({
+    secret: 'oFmDmsD2xf3ympT4olkM_Wtn',
+    resave: true,
+    saveUninitialized: false,
+    //cookie: { secure: false },
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
+
+}))
+
 //passport middle
 app.use(passport.initialize())
+app.use(passport.session())
 
 
-//session middleware
 
-app.use(session({
-        secret: 'oFmDmsD2xf3ympT4olkM_Wtn',
-        resave: false,
-        saveUninitialized: true,
-    }))
-    //statistics
+// Set global var
+app.use(function(req, res, next) {
+    res.locals.user = req.user || null
+    next()
+})
+
+
+//statistics
 app.use(express.static(path.join(__dirname, 'public')))
+
+//routes
+app.use('/', require('./routes/index'))
+app.use('/auth', require('./routes/auth'))
+
+
+//console.log(mongoose.connection)//session middleware
+
+
+
+
+
+
+
 
 
 // Routes
-app.use('/', require('./routes/index'))
-app.use('/auth', require('./routes/auth'))
-    //app.use('/stories', require('./routes/stories'))
+
+//app.use('/stories', require('./routes/stories'))
 
 const PORT = process.env.PORT || 5000;
 

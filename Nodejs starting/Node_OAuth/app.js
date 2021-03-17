@@ -26,11 +26,34 @@ connectDB()
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
+//methodOverride
+app.use(methodOverride(function(req, res) {
+    if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+        // look in urlencoded POST bodies and delete it
+        var method = req.body._method
+        delete req.body._method
+        return method
+    }
+}))
+
+
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan("dev"));
 }
-
-app.engine('.hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
+//handlebars helper
+const { formatDate, stripTags, truncate, editIcon, select } = require('./helpers/hbs')
+    //handlebars
+app.engine('.hbs', exphbs({
+    helpers: {
+        formatDate,
+        stripTags,
+        truncate,
+        editIcon,
+        select
+    },
+    defaultLayout: 'main',
+    extname: '.hbs'
+}))
 app.set('view engine', '.hbs')
 
 app.use(session({
@@ -61,21 +84,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 //routes
 app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
-
-
-//console.log(mongoose.connection)//session middleware
-
-
-
-
-
-
-
-
-
-// Routes
-
-//app.use('/stories', require('./routes/stories'))
+app.use('/stories', require('./routes/stories'))
 
 const PORT = process.env.PORT || 5000;
 

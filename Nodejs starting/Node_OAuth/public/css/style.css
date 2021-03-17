@@ -20,3 +20,16 @@ p {
 .img-small {
     width: 180px;
 }
+
+.fa-small {
+    font-size: 16
+}
+
+.btn-float {
+    float: left;
+    margin-right: 10px;
+}
+
+.img-small {
+    width: 180px
+}
